@@ -13,7 +13,7 @@ git clone git@github.com:tomsoir/bash.git ~/.bashrc.d
 ln -s ~/.bashrc.d/dot-bashrc ~/.bash_profile
 
 # Execute .bashrc to apply changes immediately
-source ~/.bashrc
+source ~/.bash_profile
 ```
 
 ## Adding stuff
