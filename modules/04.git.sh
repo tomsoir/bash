@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # create assest folder if not exist
-HOME_BASHRC_ASSETS="$HOME/.bashrc.d/assets"
 [ -d $HOME_ASSETS ] || mkdir -p $HOME_ASSETS
 
 # git autocompletion

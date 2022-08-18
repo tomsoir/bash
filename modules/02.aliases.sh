@@ -17,6 +17,10 @@ alias la='ls -FGlah'
 alias ..='cd ..'
 alias ...='cd ~/.'
 
+# bash_profile (current)
+alias bash_cd="cd $HOME_BASHRC"
+alias bash_restart="source ~/.bash_profile"
+
 # greps
 alias grep='grep --color'
 alias psgrep='ps aux | grep -v grep | grep'  # find all processes.
