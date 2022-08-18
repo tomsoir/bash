@@ -1,54 +1,31 @@
+# create assest folder if not exist
+$HOME_BASHRC_ASSETS="$HOME/.bashrc.d/assets"
+mkdir -p $HOME_ASSETS
+
 # git autocompletion
-git_completion_file=$HOME/.git-completion.bash
+git_completion_file="$HOME_BASHRC_ASSETS/.git-completion.bash"
 git_completion_url="https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
 
 if [ ! -f $git_completion_file ]; then
-    echo "
-** git autocompletion not installed. installing from $git_completion_url..."
+    echo "** git autocompletion not installed. installing from $git_completion_url..."
     curl -s -o $git_completion_file $git_completion_url
     echo "** done.
 "
 fi
 source $git_completion_file
 
-
 # git prompt
-git_prompt_file=$HOME/.git-prompt.sh
-git_prompt_url="https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
-
+git_prompt_file=$HOME_BASHRC_ASSETS/bash-git-prompt/gitprompt.sh
+git_prompt_url="git@github.com:magicmonty/bash-git-prompt.git"
 if [ ! -f $git_prompt_file ]; then
-    echo "
-** git prompt not installed. installing from $git_prompt_url..."
-    curl -s -o $git_prompt_file $git_prompt_url
+    echo "** git prompt not installed..."
+    git clone $git_prompt_url $HOME_BASHRC_ASSETS
     echo "** done.
 "
 fi
+GIT_PROMPT_ONLY_IN_REPO=1 # apply only in GH repo
+GIT_PROMPT_THEME=Single_line # gitprompt style
 source $git_prompt_file
-
-# SCM_BREEZE
-if [ -s "$HOME/.scm_breeze/scm_breeze.sh" ]; then
-    source "$HOME/.scm_breeze/scm_breeze.sh"
-    git_index --rebuild
-    update_scm_breeze
-else
-    echo "scm_breeze not installed. do this:
-
-    git clone git://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze
-    ~/.scm_breeze/install.sh
-
-then you can delete the line that it adds to your .bashrc
-"
-fi
-
-# configuring git ps1
-git_prompt_ps1='$(__git_ps1 "(%s)")\$ '
-export PROMPT_COMMAND="__git_ps1 \"$PS1\" \"\\\$ \";$PROMPT_COMMAND"
-GIT_PS1_SHOWCOLORHINTS=true # use color in git_ps1
-GIT_PS1_SHOWDIRTYSTATE=true # * = unstaged, + = staged
-GIT_PS1_SHOWSTASHSTATE=true # $ = something stashed
-GIT_PS1_SHOWUNTRACKEDFILES=true # % if something untracked
-GIT_PS1_HIDE_IF_PWD_IGNORED=true # hide git_ps1 in .gitignore'd directories
-GIT_PS1_SHOWUPSTREAM="auto" # < = behind, > = ahead, <> = diverged, = = no difference
 
 # alias lg command to show git log in a pretty format
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit"

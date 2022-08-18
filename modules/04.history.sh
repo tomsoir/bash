@@ -1,6 +1,6 @@
 # history stuff
 HISTCONTROL=ignoreboth
-HISTFILESIZE=100000
+HISTFILESIZE=10000000
 HISTSIZE=100000
 
 logs_dir="$HOME/.logs"

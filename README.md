@@ -2,10 +2,12 @@
 An attempt to organize my .bashrc
 
 ## Installation
-
 ```bash
-git clone git://github.com/jonowar/.bashrc.d.git ~/.bashrc.d
-ln -s ~/.bashrc.d/dot-bashrc .bashrc
+# Clone repo
+git clone git@github.com:tomsoir/bash.git ~/.bashrc.d
+# Link dot-bashrc to .bashrc file (running on every login)
+ln -s ~/.bashrc.d/dot-bashrc ~/.bashrc
+# Execute .bashrc to apply changes immediately
 source ~/.bashrc
 ```
 
