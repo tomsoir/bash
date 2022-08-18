@@ -5,13 +5,6 @@ export TERM=xterm-256color
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-# PS1 colors
-export PS1_COLOR1="\[\033[0;32m\]" # green
-export PS1_COLOR2="\[\033[0;34m\]" # blue
-export PS1_COLOR3="\[\033[0;31m\]" # Red
-export PS1_COLOR4="\[\033[0;34m\]" # blue
-export PS1_COLOR5="\[\033[0;00m\]" # ?
-
 # Off
 export Color_Off="\[\033[m\]"
 

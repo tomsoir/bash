@@ -5,8 +5,13 @@ An attempt to organize my .bashrc
 ```bash
 # Clone repo
 git clone git@github.com:tomsoir/bash.git ~/.bashrc.d
-# Link dot-bashrc to .bashrc file (running on every login)
-ln -s ~/.bashrc.d/dot-bashrc ~/.bashrc
+
+# Link dot-bashrc as .bashrc file (running on every login session)
+# ln -s ~/.bashrc.d/dot-bashrc ~/.bashrc
+
+# Link dot-bashrc as .bash_profile file (running on every terminal)
+ln -s ~/.bashrc.d/dot-bashrc ~/.bash_profile
+
 # Execute .bashrc to apply changes immediately
 source ~/.bashrc
 ```

@@ -1,9 +1,11 @@
+#!/bin/sh
+
 # create assest folder if not exist
-$HOME_BASHRC_ASSETS="$HOME/.bashrc.d/assets"
-mkdir -p $HOME_ASSETS
+HOME_BASHRC_ASSETS="$HOME/.bashrc.d/assets"
+[ -d $HOME_ASSETS ] || mkdir -p $HOME_ASSETS
 
 # git autocompletion
-git_completion_file="$HOME_BASHRC_ASSETS/.git-completion.bash"
+git_completion_file="$HOME_BASHRC_ASSETS/git-completion.bash"
 git_completion_url="https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash"
 
 if [ ! -f $git_completion_file ]; then
@@ -15,11 +17,15 @@ fi
 source $git_completion_file
 
 # git prompt
-git_prompt_file=$HOME_BASHRC_ASSETS/bash-git-prompt/gitprompt.sh
-git_prompt_url="git@github.com:magicmonty/bash-git-prompt.git"
+git_prompt_file="$HOME_BASHRC_ASSETS/bash-git-prompt-master/gitprompt.sh"
+git_prompt_zip="$HOME_BASHRC_ASSETS/bash-git-prompt-master.zip"
+git_prompt_url="https://github.com/magicmonty/bash-git-prompt/archive/refs/heads/master.zip"
+
 if [ ! -f $git_prompt_file ]; then
     echo "** git prompt not installed..."
-    git clone $git_prompt_url $HOME_BASHRC_ASSETS
+    curl $git_prompt_url -L -o $git_prompt_zip
+    unzip $git_prompt_zip -d $HOME_BASHRC_ASSETS
+    rm -r $git_prompt_zip
     echo "** done.
 "
 fi
